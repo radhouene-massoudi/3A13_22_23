@@ -22,6 +22,10 @@ class Student
     #[ORM\Column]
     private ?int $age = null;
 
+    #[ORM\ManyToOne(inversedBy: 'students')]
+    #[ORM\JoinColumn(name:'nc_id',referencedColumnName:'ref')]
+    private ?Classroom $calssroom = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +63,18 @@ class Student
     public function setAge(int $age): static
     {
         $this->age = $age;
+
+        return $this;
+    }
+
+    public function getCalssroom(): ?Classroom
+    {
+        return $this->calssroom;
+    }
+
+    public function setCalssroom(?Classroom $calssroom): static
+    {
+        $this->calssroom = $calssroom;
 
         return $this;
     }
