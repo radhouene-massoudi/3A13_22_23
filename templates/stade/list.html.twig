@@ -1,0 +1,7 @@
+{% for stade in stades %}
+{{stade.refStade}}
+{{stade.name}}
+{{stade.CreatedAt |date('y-m-d')}}
+<a href="{{path('addJ',{'idofStade':stade.refStade})}}"> add player</a>
+<br>
+{% endfor %}
